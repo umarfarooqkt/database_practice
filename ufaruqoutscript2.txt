@@ -1,0 +1,246 @@
+\c ufaruqassign3;
+You are now connected to database "ufaruqassign3" as user "ufaruq".
+\copy team from '/gaul/s1/student/2016/ufaruq/html/assignment3/fall2017data.txt'(delimiter '|');
+SELECT * from team;
+ teamid |   teamcity   |   teamname   
+--------+--------------+--------------
+ 18     | London       | Knights
+ 19     | Chicago      | Black Hawks
+ 08     | Philadelphia | Flyers
+ 12     | Toronto      | Maple Leaves
+ 11     | Detroit      | Red Wings
+(5 rows)
+
+INSERT INTO team VALUES('99','Colorado', 'Avalanche');
+INSERT 0 1
+INSERT INTO team VALUES('88', 'New York', 'Rangers');
+INSERT 0 1
+INSERT INTO team VALUES('78', 'Ottawa', 'Senators');
+INSERT 0 1
+INSERT INTO team VALUES('66', 'Edmonton', 'Oilers');
+INSERT 0 1
+INSERT INTO team VALUES('21','London','Whoodlers');
+INSERT 0 1
+INSERT INTO official VALUES ('99','Hugh', 'Grant', 'Toronto');
+INSERT 0 1
+INSERT INTO official VALUES ('22','Courtney', 'Cox', 'New York');
+INSERT 0 1
+INSERT INTO official VALUES ('33','Rosie', 'Odonnell', 'Ottawa');
+INSERT 0 1
+INSERT INTO official VALUES ('66','David', 'Letterman', 'Edmonton');
+INSERT 0 1
+INSERT INTO official VALUES ('11','Regis', 'Philbin', 'Toronto');
+INSERT 0 1
+INSERT INTO official VALUES ('12','Rosie', 'Cox', 'Ottawa');
+INSERT 0 1
+INSERT INTO official VALUES ('72','Mike','Bauer','Dayton');
+INSERT 0 1
+INSERT INTO game VALUES ('21','2018-02-18','Toronto',11);
+INSERT 0 1
+INSERT INTO game VALUES ('31','2018-12-20','Toronto',33);
+INSERT 0 1
+INSERT INTO game VALUES ('12','2018-12-24','Ottawa',22);
+INSERT 0 1
+INSERT INTO game VALUES ('15','2018-12-20','New York',11);
+INSERT 0 1
+INSERT INTO game VALUES ('13','2018-01-7','New York',12);
+INSERT 0 1
+INSERT INTO game VALUES ('10','2018-12-20','Ottawa',12);
+INSERT 0 1
+INSERT INTO game VALUES ('14','2018-01-8','Toronto',33);
+INSERT 0 1
+INSERT INTO playing VALUES ('21','12',3);
+INSERT 0 1
+INSERT INTO playing VALUES ('21','11',2);
+INSERT 0 1
+INSERT INTO playing VALUES ('31','12',6);
+INSERT 0 1
+INSERT INTO playing VALUES ('31','66',2);
+INSERT 0 1
+INSERT INTO playing VALUES ('12','78',2);
+INSERT 0 1
+INSERT INTO playing VALUES ('12','88',3);
+INSERT 0 1
+INSERT INTO playing VALUES ('15','88',1);
+INSERT 0 1
+INSERT INTO playing VALUES ('15','11',2);
+INSERT 0 1
+INSERT INTO playing VALUES ('13','66',5);
+INSERT 0 1
+INSERT INTO playing VALUES ('13','12',2);
+INSERT 0 1
+INSERT INTO playing VALUES ('10','66',4);
+INSERT 0 1
+INSERT INTO playing VALUES ('10','88',2);
+INSERT 0 1
+INSERT INTO playing VALUES ('14','12',3);
+INSERT 0 1
+INSERT INTO playing VALUES ('14','11',1);
+INSERT 0 1
+INSERT INTO reffing VALUES ('21','11');
+INSERT 0 1
+INSERT INTO reffing VALUES ('21','12');
+INSERT 0 1
+INSERT INTO reffing VALUES ('31','22');
+INSERT 0 1
+INSERT INTO reffing VALUES ('31','33');
+INSERT 0 1
+INSERT INTO reffing VALUES ('31','12');
+INSERT 0 1
+INSERT INTO reffing VALUES ('12','22');
+INSERT 0 1
+INSERT INTO reffing VALUES ('12','33');
+INSERT 0 1
+INSERT INTO reffing VALUES ('12','66');
+INSERT 0 1
+INSERT INTO reffing VALUES ('15','22');
+INSERT 0 1
+INSERT INTO reffing VALUES ('15','11');
+INSERT 0 1
+INSERT INTO reffing VALUES ('13','12');
+INSERT 0 1
+INSERT INTO reffing VALUES ('13','33');
+INSERT 0 1
+INSERT INTO reffing VALUES ('10','11');
+INSERT 0 1
+INSERT INTO reffing VALUES ('10','12');
+INSERT 0 1
+INSERT INTO reffing VALUES ('10','33');
+INSERT 0 1
+INSERT INTO reffing VALUES ('14','11');
+INSERT 0 1
+INSERT INTO reffing VALUES ('14','33');
+INSERT 0 1
+SELECT * FROM team;
+ teamid |   teamcity   |   teamname   
+--------+--------------+--------------
+ 18     | London       | Knights
+ 19     | Chicago      | Black Hawks
+ 08     | Philadelphia | Flyers
+ 12     | Toronto      | Maple Leaves
+ 11     | Detroit      | Red Wings
+ 99     | Colorado     | Avalanche
+ 88     | New York     | Rangers
+ 78     | Ottawa       | Senators
+ 66     | Edmonton     | Oilers
+ 21     | London       | Whoodlers
+(10 rows)
+
+SELECT * FROM official ;
+ officialid | firstname | lastname  | offcity  
+------------+-----------+-----------+----------
+ 99         | Hugh      | Grant     | Toronto
+ 22         | Courtney  | Cox       | New York
+ 33         | Rosie     | Odonnell  | Ottawa
+ 66         | David     | Letterman | Edmonton
+ 11         | Regis     | Philbin   | Toronto
+ 12         | Rosie     | Cox       | Ottawa
+ 72         | Mike      | Bauer     | Dayton
+(7 rows)
+
+SELECT * FROM game ;
+ gameid |  gamedate  | gamecity | headoff 
+--------+------------+----------+---------
+ 21     | 2018-02-18 | Toronto  | 11
+ 31     | 2018-12-20 | Toronto  | 33
+ 12     | 2018-12-24 | Ottawa   | 22
+ 15     | 2018-12-20 | New York | 11
+ 13     | 2018-01-07 | New York | 12
+ 10     | 2018-12-20 | Ottawa   | 12
+ 14     | 2018-01-08 | Toronto  | 33
+(7 rows)
+
+SELECT * FROM playing ;
+ gameid | teamid | score 
+--------+--------+-------
+ 21     | 12     |     3
+ 21     | 11     |     2
+ 31     | 12     |     6
+ 31     | 66     |     2
+ 12     | 78     |     2
+ 12     | 88     |     3
+ 15     | 88     |     1
+ 15     | 11     |     2
+ 13     | 66     |     5
+ 13     | 12     |     2
+ 10     | 66     |     4
+ 10     | 88     |     2
+ 14     | 12     |     3
+ 14     | 11     |     1
+(14 rows)
+21,31,13,14
+SELECT * FROM reffing ;
+ gameid | officialid 
+--------+------------
+ 21     | 11 l
+ 21     | 12 l
+ 31     | 22 l
+ 31     | 33 l
+ 31     | 12 l
+ 12     | 22
+ 12     | 33
+ 12     | 66
+ 15     | 22
+ 15     | 11
+ 13     | 12 l
+ 13     | 33 l
+ 10     | 11
+ 10     | 12
+ 10     | 33
+ 14     | 11 l
+ 14     | 33 l
+(17 rows)
+
+UPDATE team SET teamname = 'Maple Leafs' WHERE teamname = 'Maple Leaves';
+UPDATE 1
+UPDATE playing SET score = 3 WHERE teamid in (SELECT teamid FROM team WHERE teamname='Maple Leafs');
+UPDATE 4
+UPDATE game SET gamedate='2018-01-01' WHERE gameid in (SELECT gameid FROM reffing WHERE officialid IN (SELECT officialid FROM official WHERE firstname='David' AND lastname='Letterman')); 
+UPDATE 1
+SELECT * FROM team;
+ teamid |   teamcity   |  teamname   
+--------+--------------+-------------
+ 18     | London       | Knights
+ 19     | Chicago      | Black Hawks
+ 08     | Philadelphia | Flyers
+ 11     | Detroit      | Red Wings
+ 99     | Colorado     | Avalanche
+ 88     | New York     | Rangers
+ 78     | Ottawa       | Senators
+ 66     | Edmonton     | Oilers
+ 21     | London       | Whoodlers
+ 12     | Toronto      | Maple Leafs
+(10 rows)
+
+SELECT * FROM playing;
+ gameid | teamid | score 
+--------+--------+-------
+ 21     | 11     |     2
+ 31     | 66     |     2
+ 12     | 78     |     2
+ 12     | 88     |     3
+ 15     | 88     |     1
+ 15     | 11     |     2
+ 13     | 66     |     5
+ 10     | 66     |     4
+ 10     | 88     |     2
+ 14     | 11     |     1
+ 21     | 12     |     3
+ 31     | 12     |     3
+ 13     | 12     |     3
+ 14     | 12     |     3
+(14 rows)
+
+SELECT * FROM game;
+ gameid |  gamedate  | gamecity | headoff 
+--------+------------+----------+---------
+ 21     | 2018-02-18 | Toronto  | 11
+ 31     | 2018-12-20 | Toronto  | 33
+ 15     | 2018-12-20 | New York | 11
+ 13     | 2018-01-07 | New York | 12
+ 10     | 2018-12-20 | Ottawa   | 12
+ 14     | 2018-01-08 | Toronto  | 33
+ 12     | 2018-01-01 | Ottawa   | 22
+(7 rows)
+
+\q

@@ -1,0 +1,14 @@
+SELECT datname FROM pg_database  WHERE pg_get_userbyid(datdba) = current_user;
+DROP DATABASE IF EXISTS ufaruqassign3;
+CREATE DATABASE ufaruqassign3;
+\c ufaruqassign3;
+REVOKE CONNECT ON DATABASE ufaruqassign3 FROM public;
+GRANT CONNECT ON DATABASE ufaruqassign3 to lreid,mshirpou, mfinnie3, mshermin, yliu888;
+\dt;
+CREATE TABLE team (teamid CHAR(2) NOT NULL, teamcity VARCHAR(15), teamname VARCHAR(20),  PRIMARY KEY(teamid));
+CREATE TABLE official (officialid CHAR(2) NOT NULL, firstname VARCHAR(20), lastname VARCHAR(20), offcity VARCHAR(15), PRIMARY KEY (officialid));
+CREATE TABLE game (gameid CHAR(2) NOT NULL, gamedate DATE, gamecity VARCHAR(15), headoff CHAR(2), FOREIGN KEY(headoff) REFERENCES official(officialid), PRIMARY KEY (gameid));
+CREATE TABLE reffing (gameid CHAR(2) NOT NULL, officialid CHAR(2) NOT NULL, FOREIGN KEY (gameid) REFERENCES game(gameid), FOREIGN KEY (officialid) REFERENCES official(officialid), PRIMARY KEY (gameid, officialid));
+CREATE TABLE playing(gameid CHAR(2) NOT NULL, teamid CHAR(2) NOT NULL, score INTEGER, FOREIGN KEY (gameid) REFERENCES game(gameid), FOREIGN KEY (teamid) REFERENCES team(teamid) ON DELETE RESTRICT, PRIMARY KEY (gameid, teamid));
+\dt
+
